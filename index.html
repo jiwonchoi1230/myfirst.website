@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRAPHIC POSTER — ARCHIVE</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap">
+    <style>
+        :root {
+            --bg-color: #000000;
+            --text-main: #ffffff;
+            --accent: #ccff00; /* 다시 네온 그린 */
+            --marquee-color: #ccff00; /* 다시 네온 그린 */
+            --border: #222222;
+            --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.2;
+            overflow-x: hidden;
+        }
+
+        /* 네온 커스텀 스크롤바 */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: var(--accent); box-shadow: 0 0 10px var(--accent); }
+
+        /* 네비게이션 */
+        nav {
+            padding: 25px 40px; display: flex; justify-content: space-between; align-items: center;
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border);
+        }
+        .logo { font-family: 'Space Mono', monospace; font-weight: 700; color: var(--accent); }
+
+        /* 네온 캡슐 버튼 */
+        .pill-button {
+            padding: 8px 22px; border-radius: 100px; border: 1px solid var(--accent);
+            color: var(--accent); text-decoration: none; font-family: 'Space Mono', monospace; font-size: 0.8rem;
+            transition: var(--transition); text-transform: uppercase;
+        }
+        .pill-button:hover { background: var(--accent); color: #000; box-shadow: 0 0 20px var(--accent); }
+
+        /* 헤더 디자인 (13vw + 이미지 스타일) */
+        header { padding: 160px 40px 80px; background: #000; }
+        .header-meta { 
+            font-family: 'Space Mono', monospace; font-size: 25px; color: #666; 
+            letter-spacing: 0.05em; margin-bottom: 15px; text-transform: uppercase;
+        }
+
+        h1 { 
+            font-size: 13vw; /* 요청하신 13vw */
+            font-weight: 900; line-height: 0.85; letter-spacing: -0.01em;
+            text-transform: uppercase; display: flex; flex-direction: column;
+        }
+        .title-fill { color: #fff; }
+        .title-outline { color: transparent; -webkit-text-stroke: 1.2px #fff; }
+
+        /* [핵심] 움직이는 마키 부분만 회색 */
+        .marquee {
+            border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+            padding: 14px 0; overflow: hidden; display: flex; background: #000;
+        }
+        .marquee-content {
+            display: flex; animation: marquee 30s linear infinite;
+            font-family: 'Space Mono', monospace; font-size: 0.9rem; 
+            color: var(--marquee-color); /* 회색 적용 */
+            white-space: nowrap;
+        }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* 그리드 컨테이너 */
+        .container { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--border); }
+
+        .poster-link {
+            text-decoration: none; color: inherit; border-right: 1px solid var(--border); border-top: 1px solid var(--border);
+            position: relative; padding: 60px 40px; transition: var(--transition); display: flex; flex-direction: column;
+        }
+        .poster-link:hover { background: #080808; border-color: var(--accent); z-index: 10; }
+
+        /* 시스템 번호 (네온 그린) */
+        .sys-no {
+            font-family: 'Space Mono', monospace; font-size: 1.1rem; font-weight: 700;
+            color: var(--accent); margin-bottom: 30px; display: block;
+            text-shadow: 0 0 10px rgba(204, 255, 0, 0.2);
+        }
+
+        /* 이미지 박스 */
+        .image-box { 
+            width: 100%; aspect-ratio: 1 / 1.414; overflow: hidden; 
+            background: #111; transition: var(--transition); border: 1px solid #111;
+        }
+        .image-box img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
+        .poster-link:hover .image-box { border-color: var(--accent); box-shadow: 0 0 30px rgba(204, 255, 0, 0.2); }
+        .poster-link:hover .image-box img { transform: scale(1.1); }
+
+        /* 하단 텍스트 정보 */
+        .info { padding-top: 40px; display: flex; flex-direction: column; gap: 15px; }
+        .info h3 { 
+            font-size: 1.4rem; font-weight: 900; text-transform: uppercase; 
+            letter-spacing: -0.02em; transition: var(--transition); 
+        }
+        .poster-link:hover h3 { color: var(--accent); } /* 호버 시 네온 그린 */
+
+        .info-bottom { display: flex; justify-content: space-between; border-top: 1px solid var(--border); padding-top: 15px; }
+        .info p { font-family: 'Space Mono', monospace; font-size: 0.8rem; color: #555; }
+        .tag { font-family: 'Space Mono', monospace; font-size: 0.8rem; font-weight: 700; color: var(--accent); }
+
+        @media (max-width: 1200px) { .container { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { h1 { font-size: 16vw; } .poster-link { padding: 40px 25px; } }
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <div class="logo">GRAPHIC ARCHIVE</div>
+        <a href="#" class="pill-button">Explore Archive</a>
+    </nav>
+
+    <header>
+        <p class="header-meta">POSTER EXHIBITION 2026</p>
+        <h1>
+            <span class="title-outline">GRAPHIC</span>
+            <span class="title-fill">POSTER</span>
+        </h1>
+    </header>
+
+    <!-- 회색으로 움직이는 마키 섹션 -->
+    <div class="marquee">
+        <div class="marquee-content" id="marquee-text"></div>
+    </div>
+
+    <main class="container" id="grid">
+        <!-- JS로 데이터 주입 -->
+    </main>
+
+    <script>
+        const posterData = [
+            { title: "PULSE", id: "01" }, { title: "Your Name", id: "02" },
+            { title: "100 BESTE PLAKATE", id: "03" }, { title: "BESTE PLAKATE 2", id: "04" },
+            { title: "STARGAZER", id: "05" }, { title: "IN A DREAMLAND", id: "06" },
+            { title: "ETHEREAL", id: "07" }, { title: "UNFAMILAR FAMILIARITY", id: "08" },
+            { title: "SOLITUDE", id: "09" }, { title: "UNLIMITED EDITION ", id: "10" },
+            { title: "UNLIMITED EDITION 2 ", id: "11" }, { title: "SPRING", id: "12" },
+            { title: "SHAPES OF SILENCE", id: "13" }, { title: "THE HEARTBEAT", id: "14" }
+        ];
+
+        const marqueeBox = document.getElementById('marquee-text');
+        const mText = "• GRAPHIC POSTER ARCHIVE VOL.01 • SYSTEM STATUS: ACTIVE • EXHIBITION 2026 • SELECTED WORKS • ";
+        marqueeBox.innerHTML = mText.repeat(12);
+
+        const grid = document.getElementById('grid');
+        posterData.forEach(poster => {
+            const card = `
+                <a href="./details/poster${parseInt(poster.id)}.html" class="poster-link">
+                    <span class="sys-no">NO.${poster.id}</span>
+                    <div class="poster-card">
+                        <div class="image-box">
+                            <img src="./imgaes  /poster${parseInt(poster.id)}.jpg" alt="${poster.title}" 
+                                 onerror="this.src='https://via.placeholder.com/600x848/111/333?text=IMAGE+MISSING'">
+                        </div>
+                        <div class="info">
+                            <h3>${poster.title}</h3>
+                            <div class="info-bottom">
+                                <p>GRAPHIC ARCHIVE</p>
+                                <span class="tag">VIEW DETAIL</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            `;
+            grid.innerHTML += card;
+        });
+    </script>
+</body>
+</html>

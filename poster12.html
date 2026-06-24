@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>z— ARCHIVE DETAIL</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap">
+    <style>
+        :root {
+            --bg-color: #000000;
+            --text-main: #ffffff;
+            --accent: #ccff00; /* 네온 그린 */
+            --border: #222222;
+            --dim-text: #888888;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+            overflow-x: hidden;
+            text-align: left; /* 전체 왼쪽 정렬 */
+        }
+
+        /* 메인 레이아웃 */
+        .detail-wrapper {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            min-height: 100vh;
+        }
+
+        /* 왼쪽: 이미지 영역 */
+        .image-section {
+            padding: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-right: 1px solid var(--border);
+            background: #050505;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+        }
+
+        .image-section img {
+            width: 100%;
+            max-width: 650px;
+            height: auto;
+            border: 1px solid #1a1a1a;
+        }
+
+        /* 오른쪽: 정보 영역 */
+        .info-section {
+            padding: 100px 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* 내부 요소 왼쪽 정렬 */
+        }
+
+        /* 1. 상단 분석 코드 */
+        .analysis-code {
+            font-family: 'Space Mono', monospace;
+            font-size: 16px;
+            color: var(--accent);
+            margin-bottom: 25px;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+            text-transform: uppercase;
+        }
+
+        /* 2. 메인 제목 */
+        h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 0.9;
+            letter-spacing: -0.05em;
+            margin-bottom: 60px;
+            text-transform: uppercase;
+            text-align: left;
+        }
+
+        /* 3. 본문 설명 (크기 1.35rem 유지) */
+        .description {
+            font-size: 1.35rem; 
+            color: #dddddd;
+            line-height: 1.6;
+            margin-bottom: 80px;
+            max-width: 600px;
+            text-align: left; /* 왼쪽 정렬 */
+        }
+
+        /* 4. 스펙 테이블 */
+        .specs-table {
+            width: 80%;
+            border-top: 1px solid var(--border);
+            margin-bottom: 80px;
+        }
+
+        .spec-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 25px 0;
+            border-bottom: 1px solid var(--border);
+            font-family: 'Space Mono', monospace;
+            text-transform: uppercase;
+        }
+
+        .spec-label {
+            color: var(--dim-text);
+            font-size: 15px;
+            letter-spacing: 0.1em;
+        }
+
+        .spec-value {
+            color: var(--text-main);
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        /* 5. 하단 뒤로가기 버튼 */
+        .back-footer {
+            margin-top: auto;
+            padding-top: 60px;
+        }
+
+        .back-link {
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 1.50rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: inline-block;
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+            transform: translateX(15px);
+        }
+
+        /* 반응형 모바일 */
+        @media (max-width: 1100px) {
+            .detail-wrapper { grid-template-columns: 1fr; }
+            .image-section { 
+                position: static; height: auto; border-right: none; 
+                border-bottom: 1px solid var(--border); padding: 50px 30px; 
+            }
+            .info-section { padding: 60px 40px; }
+            h1 { font-size: 4.5rem; }
+            .description { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="detail-wrapper">
+        <!-- 왼쪽 이미지 섹션 -->
+        <section class="image-section">
+            <!-- 요청하신 경로 유지 -->
+            <img src="../imgaes  /poster12.jpg" alt="SPRING">
+        </section>
+
+        <!-- 오른쪽 정보 섹션 -->
+        <section class="info-section">
+            <!-- 분석 코드: SPRING  -->
+            <p class="analysis-code"> ANALYSIS_12: FREE TOPIC POSTER _VISUALIZATION</p>
+            
+            <!-- 제목 -->
+            <h1>SPRING</h1>
+            
+            <!-- 본문 설명 (왼쪽 정렬) -->
+            <div class="description">
+         Spring Vibrant uses natural scenery as a visual texture to convey the vitality and renewal of spring. 
+                    The pastel tones and experimental color treatment transform the landscape into an emotional experience, symbolizing growth, freshness, and seasonal change.
+            </div>
+            <!-- 기술 사양 테이블 -->
+            <div class="specs-table">
+                <div class="spec-row">
+                    <span class="spec-label">DIMENSIONS</span>
+                    <span class="spec-value">297 X 420MM (A3)</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-label">DESIGNER</span>
+                    <span class="spec-value">JIWON CHOI</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-label">YEAR</span>
+                    <span class="spec-value">2026 /GRAPHIC DESIGN/ W14</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-label">FORMAT</span>
+                    <span class="spec-value">PRINT / DIGITAL</span>
+                </div>
+            </div>
+
+            <!-- 뒤로가기 버튼 -->
+            <div class="back-footer">
+                <a href="../index.html" class="back-link">RETURN TO PAGE</a>
+            </div>
+        </section>
+    </main>
+
+</body>
